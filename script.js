@@ -1,26 +1,19 @@
-//your JS code here. If required.
+ function startRendering() {
+            const text = "We love Programming!";
+            const inputSpeed = document.getElementById("speed").value;
+            const displayDiv = document.getElementById("text");
+            displayDiv.textContent = ""; // Clear previous text
+            
+            let index = 0;
+            let speed = 500 / parseInt(inputSpeed, 10); // Calculate speed
 
-function startRendering(){
-	const text =  "e love Programming!"
-	const inputSpeed= document.getElementById("speed").value;
-	const output = document.getElementById("text");
+            function renderText() {
+                if (index < text.length) {
+                    displayDiv.textContent += text[index];
+                    index++;
+                    setTimeout(renderText, speed);
+                }
+            }
 
-	let delay = 500/ parseInt(inputSpeed);
-	
-	output.textContent="W";
-	
-	let index = 0;
-
-	function renderText(){
-
-		if(index < text.length){
-			output.textContent+= text[index];
-			index++;
-
-			setTimeout(renderText,delay)
-		}
-	}
-
-	renderText();
-	
-}
+            renderText(); // Start rendering
+        }
